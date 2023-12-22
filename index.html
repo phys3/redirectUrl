@@ -3,7 +3,11 @@
 <head>
     <title>Redirecting...</title>
     <script>
-        window.location.replace('courtz.demo:/oauth2redirect');
+        window.onload = function() {
+            var url = new URL(window.location.href);
+            var redirectUrl = 'courtz.demo:/oauth2redirect' + url.search;
+            window.location.replace(redirectUrl);
+        }
     </script>
 </head>
 <body>
