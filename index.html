@@ -6,16 +6,7 @@
         window.onload = function() {
             var url = new URL(window.location.href);
             var redirectUrl = 'courtz.demo:/oauth2redirect' + url.search;
-
-            // Attempt to send a fetch request to your app with the authorization code
-            fetch(redirectUrl)
-            .then(() => {
-                // Redirect to the app after the fetch request
-                window.location.replace('courtz.demo:/');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+            window.location.replace(redirectUrl);
         }
     </script>
 </head>
