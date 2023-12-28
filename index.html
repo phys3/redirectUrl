@@ -6,7 +6,15 @@
         window.onload = function() {
             var url = new URL(window.location.href);
             var redirectUrl = 'courtz.demo:/oauth2redirect' + url.search;
-            window.location.replace(redirectUrl);
+
+            // Check if the page is being loaded as a result of a redirect from Google OAuth
+            if (url.search.includes('code')) {
+                // If it is, send a message to your app with the authorization code
+                window.ReactNativeWebView.postMessage(url.search);
+            } else {
+                // If it's not, proceed with the redirect as normal
+                window.location.replace(redirectUrl);
+            }
         }
     </script>
 </head>
